@@ -1,0 +1,24 @@
+<div class="container-fluid h-100 px-0">
+    <div class="content-top d-flex align-items-center justify-content-between px-md-5 px-3" *ngIf="urlSplit && urlSplit[1] && topBarList.includes(urlSplit[1])">
+        <mat-icon class="text-white cursor-pointer overflow-visible" (click)="openMenu(content)">menu</mat-icon>
+        <h1 class="m-0 cursor-pointer" (click)="goTo('/')">Real Estate</h1>
+        <div class="visibility-hidden"></div>
+        <ng-template #content let-modal>
+            <div class="modal-header p-4 no-border">
+              <div class="row">
+                <div class="col-12 ps-md-5 ps-3">
+                  <button type="button" class="btn-close ms-0 ps-0" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+              </div>      
+            </div>
+            <div class="modal-body d-flex-row align-items-center">
+                <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('company')">Company</p>
+                <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('portfolio')">Portfolio</p>
+                <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('investment')">Investment</p>
+                <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('collaborators')">Collaborators</p>
+                <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('our-world')">World of Real Estate</p>
+            </div>
+          </ng-template>
+    </div>
+    <router-outlet></router-outlet>
+</div>

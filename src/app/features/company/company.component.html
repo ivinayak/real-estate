@@ -1,0 +1,125 @@
+<div class="container-fluid page h-100" ngbScrollSpy #companySpy="ngbScrollSpy">
+    <div class="row mb-5" ngbScrollSpyFragment="top">
+        <div class="col-12 bg-img-company d-flex align-items-center justify-content-center text-center" [ngStyle]="{'background-image': 'url(' + company.mainPhoto.path + ')'}">
+            <label class="text-center p-5 font-size-50 text-uppercase text-white">{{company.pictureText}}</label>
+            
+        </div>
+        <div class="content-bottom align-items-center justify-content-center">
+            <mat-icon class="text-white cursor-pointer" (click)="companySpy.scrollTo('quoteArea')">expand_more</mat-icon>
+        </div>
+    </div>
+    <div class="row my-5 pt-5" ngbScrollSpyFragment="quoteArea">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 text-center">
+            <label class="font-size-xl text-uppercase">{{company.mainQuote.text}}</label>
+            <label class="hp-label pt-4 text-uppercase">{{company.mainQuote.from}}</label>
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row my-3" ngbScrollSpyFragment="dataArea">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 text-center">
+            <div class="row">
+                <div class="col-6">
+                    <p *ngFor="let text of company.aboutCompanyTextsLeftColumn">{{text}}</p>
+                </div>
+                <div class="col-6">
+                    <p *ngFor="let text of company.aboutCompanyTextsRightColumn">{{text}}</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-12 bg-img-company-2 d-flex align-items-center justify-content-center text-center" [ngStyle]="{'background-image': 'url(' + company.image2.path + ')'}">
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10">
+            <div class="row justify-content-center text-center font-size-xl text-uppercase">
+                <div class="col-6 py-2" *ngFor="let op of company.companyOps">
+                    {{op}}
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-12 bg-img-company-3 d-flex align-items-center justify-content-center text-center" [ngStyle]="{'background-image': 'url(' + company.image3.path + ')'}">
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 bottom-bordered font-size-xl text-uppercase text-center pb-4">
+            {{company.principleHeader}}
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 bottom-bordered pb-4">
+            <div class="row">
+                <div class="col-6 py-3" *ngFor="let princi of company.principles">
+                    <label class="font-size-xl text-uppercase pb-3">{{princi.name}}</label>
+                    <label>{{princi.about}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row m-5 justify-content-center">
+        <div class="col-6 px-4 bg-img-company-2" [ngStyle]="{'background-image': 'url(' + company.image4.path + ')'}">
+        </div>
+        <div class="col-6 ps-5">
+            <label class="text-uppercase font-size-xl">
+                {{company.person.name}}
+            </label>
+            <p class="hp-label text-uppercase pt-4">
+                {{company.person.post}}
+            </p>
+            <p *ngFor="let quote of company.person.quotes">{{quote}}</p>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 bottom-bordered font-size-xl text-uppercase text-center pb-4">
+            {{company.teamHeader}}
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="col-3 d-flex-row ps-0" [class.ps-0]="i % 4 == 0" [class.pe-0]="i % 4 == 3" *ngFor="let person of company.team; let i = index">
+            <div class="bg-img-person" [ngStyle]="{'background-image': 'url(' + person.imagePath + ')'}">
+
+            </div>
+            <label class="font-size-xl text-uppercase pt-3">{{person.name}}</label>
+            <p class="hp-label text-uppercase">{{person.post}}</p>
+        </div>
+    </div>
+</div>

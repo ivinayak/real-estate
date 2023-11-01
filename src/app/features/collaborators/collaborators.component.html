@@ -1,0 +1,50 @@
+<div class="container-fluid page h-100" ngbScrollSpy #collaboratorSpy="ngbScrollSpy">
+    <div class="row mb-5" ngbScrollSpyFragment="top">
+        <div [ngStyle]="{'background-image': 'url(' + collaborators.mainPhoto.path + ')'}" class="col-12 bg-img-collaborators d-flex align-items-center justify-content-center text-center">
+            <label class="text-center p-5 font-size-50 text-uppercase text-white">{{collaborators.mainPhoto.text}}</label>
+
+        </div>
+        <div class="content-bottom align-items-center justify-content-center">
+            <mat-icon class="text-white cursor-pointer" (click)="collaboratorSpy.scrollTo('dataArea')">expand_more
+            </mat-icon>
+        </div>
+    </div>
+    <div class="row my-5 px-5 pb-5 bottom-bordered" ngbScrollSpyFragment="dataArea">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10">
+            <p class="font-size-xl text-uppercase text-center">{{collaborators.header}}</p>
+            <p class="font-size-14 py-2" *ngFor="let text of collaborators.texts">{{text}}</p>
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 font-size-xl text-uppercase text-center pb-4">
+            {{collaborators.collaboratorHeader}}
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row my-5 px-5 align-items-center" ngbScrollSpyFragment="peopleImagesArea">
+        <div class="col-3 d-flex-row ps-0 pb-3" *ngFor="let coll of collaborators.collaboratorList">
+            <div [ngStyle]="{'background-image': 'url(' + coll.imagePath + ')'}" class="bg-img-person">
+
+            </div>
+            <label class="font-size-xl text-uppercase pt-3">{{coll.name}}</label>
+        </div>
+    </div>
+    <div class="row m-5" ngbScrollSpyFragment="companyImagesArea">
+        <div class="col-3" *ngFor="let comp of collaborators.companies">
+            <div [ngStyle]="{'background-image': 'url(' + comp.imagePath + ')'}" class="bg-img-company-col">
+
+            </div>
+        </div>
+    </div>
+</div>

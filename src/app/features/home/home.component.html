@@ -1,0 +1,89 @@
+<div class="container-fluid h-100 px-0" ngbScrollSpy #spy="ngbScrollSpy" (activeChange)="changeLocation($event)">
+    <div class="row mx-0 mb-3">
+      <div class="col-12 px-0">
+        <video autoplay muted loop id="myVideo">
+          <source [src]="homePage.topVideo.path" [type]="homePage.topVideo.type">
+        </video>
+        <div class="content-top d-flex align-items-center justify-content-between px-md-5 px-3">
+          <mat-icon class="text-white cursor-pointer overflow-visible" (click)="openMenu(content)">menu</mat-icon>
+          <h1 class="m-0">{{homePage.headerText}}</h1>
+          <mat-icon class="text-white cursor-pointer" [class.visibility-hidden]="spy.active != ''" *ngIf="!video.muted" (click)="toggleMute()">volume_up</mat-icon>
+          <mat-icon class="text-white cursor-pointer" [class.visibility-hidden]="spy.active != ''" *ngIf="video.muted" (click)="toggleMute()">volume_off</mat-icon>
+        </div>
+        <div class="content-bottom align-items-center justify-content-center" [class.d-flex]="spy.active == ''" [class.d-none]="spy.active != ''">
+          <mat-icon class="text-white cursor-pointer" (click)="spy.scrollTo('numberArea')">expand_more</mat-icon>
+        </div>
+      </div>
+    </div>  
+    <div class="row mx-1 justify-content-center" ngbScrollSpyFragment="numberArea">
+      <div class="col-md-1"></div>
+      <div class="col-12 col-md-10 d-flex justify-content-around align-items-center my-5 extra-padding">
+        <div class="row w-100">
+          <div class="col-12 col-md-4 text-center vertical-separator add-gap">
+            <span class="font-size-50 d-flex align-items-center justify-content-center">{{homePage.currencySign}}<span id="n1" class="odometer"></span>.<span class="odometer" id="n4"></span>&nbsp;{{homePage.odometer1.unit}}</span>
+            <label class="hp-label text-uppercase">{{homePage.odometer1.label}}</label>
+          </div>
+          <div class="col-12 col-md-4 text-center vertical-separator add-gap">
+            <span class="font-size-50 d-flex align-items-center justify-content-center">{{homePage.currencySign}}<span id="n2" class="odometer"></span>.<span class="odometer" id="n5"></span>&nbsp;{{homePage.odometer2.unit}}</span>
+            <label class="hp-label text-uppercase">{{homePage.odometer2.label}}</label>
+          </div>
+          <div class="col-12 col-md-4 text-center add-gap">
+            <span class="font-size-50 d-flex align-items-center justify-content-center">{{homePage.currencySign}}<span id="n3" class="odometer"></span>.<span class="odometer" id="n6"></span>&nbsp;{{homePage.odometer3.unit}}</span>
+            <label class="hp-label text-uppercase">{{homePage.odometer3.label}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row px-5 mx-0 mb-5" ngbScrollSpyFragment="introTextArea">
+      <div class="col-12 font-size-50 d-flex align-items-center text-center">
+        {{homePage.introText}}
+      </div>
+    </div>
+    <div class="row mx-0 mt-3" ngbScrollSpyFragment="videoArea">
+      <div class="col-12 px-0">
+        <video autoplay muted loop id="myVideo">
+          <source [src]="homePage.secondVideo.path" [type]="homePage.secondVideo.type">
+        </video>
+      </div>
+    </div>
+    <div class="row mx-0 bg-black pt-3" ngbScrollSpyFragment="imagesArea">
+      <div class="col-6">
+        <img [src]="homePage.image1.path" class="big-picture">
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-12 d-flex align-items-center justify-content-center text-left pb-3">
+            <img [src]="homePage.image2.path" class="small-picture">
+            <label class="text-white px-3">{{homePage.image2.label}}</label>
+          </div>
+          <div class="col-12 d-flex align-items-center justify-content-center py-3">
+            <label class="text-white px-3 text-right">{{homePage.image3.label}}</label>
+            <img [src]="homePage.image3.path" class="small-picture">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mx-0">
+      <div class="col-12 bg-img d-flex-row justify-content-center text-center">
+        <label class="text-center p-5 font-size-xl">{{homePage.homeQuote.text}}</label>
+        <br><label class="hp-label text-uppercase px-5">{{homePage.homeQuote.from}}</label>
+      </div>
+    </div>
+    <ng-template #content let-modal>
+      <div class="modal-header p-4 no-border">
+        <div class="row">
+          <div class="col-12 ps-md-5 ps-3">
+            <button type="button" class="btn-close ms-0 ps-0" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+        </div>      
+      </div>
+      <div class="modal-body d-flex-row align-items-center">
+        <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('company')">Company</p>
+        <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('portfolio')">Portfolio</p>
+        <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('investment')">Investment</p>
+        <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('collaborators')">Collaborators</p>
+        <p class="font-size-50 cursor-pointer hover-underline text-uppercase text-center" (click)="goTo('our-world')">World of Real Estate</p>
+      </div>
+    </ng-template>
+  </div>

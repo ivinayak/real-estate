@@ -1,0 +1,109 @@
+<div class="container-fluid page h-100  bg-black">
+    <div class="row my-5 px-5 align-items-center bg-black">
+        <div class="col-md-4 col-12 d-flex-row pb-5 cursor-pointer" (click)="openModal(content, asset)" *ngFor="let asset of portfolio.assets">
+            <div [ngStyle]="{'background-image': 'url(' + asset.pfPageImagePath + ')'}" class="bg-img-pf-1">
+
+            </div>
+            <label class="font-size-xl text-uppercase pt-3 text-white">{{asset.name}}</label>
+            <p class="hp-label text-uppercase text-white">{{asset.location}}, {{asset.countryCode}}</p>
+        </div>
+    </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header no-border pb-0">
+          <div class="row">
+            <div class="col-12">
+              <button type="button" class="btn-close ms-0 ps-0" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+          </div>      
+        </div>
+        <div class="modal-body p-0 d-flex-row align-items-center">
+            <div class="container-fluid page h-100" ngbScrollSpy #assetSpy="ngbScrollSpy">
+                <div class="row mb-5" ngbScrollSpyFragment="top">
+                    <div class="col-12 bg-img-company d-flex align-items-center justify-content-center text-center" [ngStyle]="{'background-image': 'url(' + selectedAsset.modalImagePath + ')'}">
+                        
+                    </div>
+                    <div class="content-bottom align-items-center justify-content-center">
+                        <mat-icon class="text-white cursor-pointer" (click)="assetSpy.scrollTo('quoteArea')">expand_more</mat-icon>
+                    </div>
+                </div>
+                <div class="row my-5 pt-5 justify-content-center" ngbScrollSpyFragment="quoteArea">
+                    <div class="col-12 font-weight-bold font-size-50 text-center">
+                        {{selectedAsset.name}}
+                    </div>
+                </div>
+                <div class="row my-5 pt-5" ngbScrollSpyFragment="quoteArea">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-6">
+                                <p *ngFor="let text of selectedAsset.texts" class="">{{text}}</p>
+                            </div>
+                            <div class="col-6 ps-5">
+                                <div class="row">
+                                    <div class="col-6 boxed py-2" *ngFor="let detail of selectedAsset.details">
+                                        <p class="hp-label">
+                                            {{detail.key}}
+                                        </p>
+                                        <p>
+                                            {{detail.value}}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        
+                    </div>
+                </div>
+                <div class="row my-5 px-5">
+                    <ngb-carousel *ngIf="selectedAsset.imageCarouselPaths">
+                        <ng-template ngbSlide *ngFor="let img of selectedAsset.imageCarouselPaths">
+                            <div class="col-12">
+                                <img class="w-100 h-80" [src]="img.imagePath"/>
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div>
+                <div class="row my-5 mx-1 px-5 align-items-center" ngbScrollSpyFragment="leftRightArea">
+                    <ng-container *ngFor="let about of selectedAsset.about; let i = index">
+                        <div [ngStyle]="{'background-image': 'url(' + about.imagePath + ')'}" class="col-md-6 col-12 bg-img-investment-1" *ngIf="i % 2 == 0">
+            
+                        </div>
+                        <div class="col-md-6 col-12 px-5" *ngIf="i % 2 == 0">
+                            <p class="">
+                                {{about.text}}
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-12 px-5" *ngIf="i % 2 != 0">
+                            <p class="" >
+                                {{about.text}}
+                            </p>
+                        </div>
+                        <div [ngStyle]="{'background-image': 'url(' + about.imagePath + ')'}" class="col-md-6 col-12 bg-img-investment-2" *ngIf="i % 2 != 0">
+                
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="row my-5 px-5">
+                    <ngb-carousel *ngIf="selectedAsset.videoCarouselPaths">
+                        <ng-template ngbSlide *ngFor="let vid of selectedAsset.videoCarouselPaths">
+                            <div class="col-12">
+                                <video autoplay muted loop id="myVideo">
+                                    <source [src]="vid.videoPath" [type]="vid.type">
+                                </video>
+                            </div>
+                            <div class="carousel-caption">
+                                <p class="font-size-xl">{{vid.text}}</p>
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div>
+            </div>
+        </div>
+      </ng-template>
+</div>
