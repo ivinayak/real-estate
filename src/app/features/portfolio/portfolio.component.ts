@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AppContent } from 'src/app/shared/content';
 
 @Component({
@@ -11,7 +11,7 @@ export class PortfolioComponent implements OnInit{
 
   appContent = new AppContent();
   portfolio: any;
-  selectedAsset: any;
+  selectedAsset: any;  
 
   constructor(private modalService: NgbModal){}
 

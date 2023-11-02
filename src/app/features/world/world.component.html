@@ -1,20 +1,49 @@
 <div class="container-fluid page h-100  bg-black">
     <div class="row mx-0 bg-black py-5 px-5">
-        <div class="col-6">
-            <img [src]="img1Path" class="big-picture">
+        <div class="col-6 mh-400">
+            <img [src]="world.topLeftImage.path" class="big-picture">
         </div>
-        <div class="col-6">
+        <div class="col-6 mh-400 overflow-y-scroll">
             <div class="row">
-                <div class="col-12 d-flex align-items-center justify-content-center text-left pb-3">
-                    <img [src]="img2Path" class="small-picture">
-                    <label class="text-white px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit</label>
-                </div>
-                <div class="col-12 d-flex align-items-center justify-content-center py-3">
-                    <label class="text-white px-3 text-right">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit</label>
-                    <img [src]="img3Path" class="small-picture">
+                <ng-container *ngFor="let img of world.topRightImages; let i = index">
+                    <div class="col-12 d-flex align-items-center justify-content-center text-left pb-3"
+                        *ngIf="i % 2 == 0">
+                        <img [src]="img.path" class="small-picture">
+                        <label class="text-white px-3">{{img.text}}</label>
+                    </div>
+                    <div class="col-12 d-flex align-items-center justify-content-center py-3" *ngIf="i % 2 == 1">
+                        <label class="text-white px-3 text-right">{{img.text}}</label>
+                        <img [src]="img.path" class="small-picture">
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-black" data-masonry='{"percentPosition": true }'>
+        <div class="col-12 col-lg-4 col-md-3 p-4 cursor-pointer" (click)="openVideo(content, card)"
+            *ngFor="let card of world.bottomCards">
+            <div class="card">
+                <img [src]="card.imagePath" class="card-img-top" alt="...">
+                <div class="card-body bg-black">
+                    <h5 class="card-title text-white">{{card.text}}</h5>
                 </div>
             </div>
         </div>
     </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header no-border pb-0">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn-close ms-0 ps-0" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body p-0 d-flex-row align-items-center">
+            <video autoplay muted loop id="myVideo">
+                <source [src]="selectedVideo.videoPath" [type]="selectedVideo.videoType">
+            </video>
+        </div>
+    </ng-template>
 </div>

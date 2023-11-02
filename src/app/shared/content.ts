@@ -506,6 +506,67 @@ export class AppContent {
                     ]
                 },
             ]
+        },
+        world:{
+            topLeftImage: {
+                path: '../assets/images/img1.jpg'
+            },
+            topRightImages: [
+                {
+                    path: '../assets/images/img2.jpg',
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                },
+                {
+                    path: '../assets/images/img3.jpg',
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                },
+                {
+                    path: '../assets/images/img4.jpg',
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                },
+                {
+                    path: '../assets/images/img6.jpg',
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+                },
+            ],
+            bottomCards: [
+                {
+                    imagePath: '../assets/images/img18.jpg',
+                    videoPath: '../assets/videos/home2.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                },
+                {
+                    imagePath: '../assets/images/img3.jpg',
+                    videoPath: '../assets/videos/home.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                },
+                {
+                    imagePath: '../assets/images/img7.jpg',
+                    videoPath: '../assets/videos/home2.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                },
+                {
+                    imagePath: '../assets/images/img4.jpg',
+                    videoPath: '../assets/videos/home.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                },
+                {
+                    imagePath: '../assets/images/img5.jpg',
+                    videoPath: '../assets/videos/home2.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                },
+                {
+                    imagePath: '../assets/images/img18.jpg',
+                    videoPath: '../assets/videos/home2.mp4',
+                    videoType: 'video/mp4',
+                    text: 'Lorem ipsum dolor sit amet'
+                }
+            ]
         }
     }
 }
